@@ -21,7 +21,10 @@ const SessionDatePicker: React.FunctionComponent<Props> = props => (
 
                 return (
                     <li key={isoDateStr} className="date-menu__item">
-                        <Link className="date-menu__link active" to={`/${isoDateStr}`}>
+                        <Link
+                            className={`date-menu__link ${props.selectedDate === isoDateStr ? 'active' : ''}`}
+                            to={`/${isoDateStr}`}
+                        >
                             <span className="date-menu__weekday">
                                 {date.toLocaleDateString('de-DE', { weekday: 'short' })}
                             </span>
