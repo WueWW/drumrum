@@ -10,7 +10,7 @@ import SessionViewer from './page/SessionViewer';
 
 export interface Props {}
 
-const SESSION_DATA_URL = '/session.json'; // 'https://wueww-tool.metafnord.de/export/session.json';
+const SESSION_DATA_URL = 'https://wueww-tool.metafnord.de/export/session.json';
 const updatesChannel = typeof BroadcastChannel !== 'undefined' && new BroadcastChannel('session-updates');
 
 class App extends Component<Props, AppState> {
