@@ -15,6 +15,8 @@ export interface Props extends FavManagerProps, RouteComponentProps<any> {
 
 export interface State {}
 
+// TODO fix swipe left/right
+
 class SessionViewer extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -81,7 +83,6 @@ class SessionViewer extends Component<Props, State> {
                     <SessionDatePicker
                         options={Object.keys(partitionedSessions).sort()}
                         selectedDate={this.selectedDate()}
-                        onDateSelected={this.onDateSelected}
                     />
                     <SessionTable {...this.props} sessions={partitionedSessions[this.selectedDate()]} />
 

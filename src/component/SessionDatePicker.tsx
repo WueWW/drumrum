@@ -1,17 +1,11 @@
 import React from 'react';
 
-import { formatDate } from '../util/dateUtil';
 import { Link } from 'react-router-dom';
 
 export interface Props {
     options: string[];
     selectedDate: string;
-
-    onDateSelected: (selectedDate: string) => void;
 }
-
-// TODO propage route change
-// TODO maybe remove handler prop
 
 const SessionDatePicker: React.FunctionComponent<Props> = props => (
     <nav className="date-menu">
@@ -43,19 +37,6 @@ const SessionDatePicker: React.FunctionComponent<Props> = props => (
             })}
         </ul>
     </nav>
-    /* <Segment>
-        <Dropdown
-            fluid
-            trigger={
-                <span>
-                    <Icon name="calendar outline" /> {formatDate(props.selectedDate)}
-                </span>
-            }
-            options={buildOptions(props.options)}
-            value={props.selectedDate}
-            onChange={(e, p) => props.onDateSelected(p.value as string)}
-        />
-    </Segment> */
 );
 
 export default SessionDatePicker;
