@@ -1,0 +1,58 @@
+import React from 'react';
+
+import { formatDate } from '../util/dateUtil';
+import { Link } from 'react-router-dom';
+
+export interface Props {
+    options: string[];
+    selectedDate: string;
+
+    onDateSelected: (selectedDate: string) => void;
+}
+
+// TODO propage route change
+// TODO maybe remove handler prop
+
+const SessionDatePicker: React.FunctionComponent<Props> = props => (
+    <nav className="date-menu">
+        <ul className="date-menu__list">
+            {props.options.map(isoDateStr => {
+                const date = new Date(isoDateStr);
+
+                return (
+                    <li key={isoDateStr} className="date-menu__item">
+                        <Link className="date-menu__link active" to={`/${isoDateStr}`}>
+                            <span className="date-menu__weekday">
+                                {date.toLocaleDateString('de-DE', { weekday: 'short' })}
+                            </span>
+                            <span className="date-menu__day">
+                                {date.toLocaleDateString('de-DE', { day: '2-digit' })}
+                            </span>
+                            <span className="date-menu__month">
+                                {date.toLocaleDateString('de-DE', { month: 'long' })}
+                            </span>
+                            <span className="date-menu__year">
+                                {date.toLocaleDateString('de-DE', { year: 'numeric' })}
+                            </span>
+                        </Link>
+                    </li>
+                );
+            })}
+        </ul>
+    </nav>
+    /* <Segment>
+        <Dropdown
+            fluid
+            trigger={
+                <span>
+                    <Icon name="calendar outline" /> {formatDate(props.selectedDate)}
+                </span>
+            }
+            options={buildOptions(props.options)}
+            value={props.selectedDate}
+            onChange={(e, p) => props.onDateSelected(p.value as string)}
+        />
+    </Segment> */
+);
+
+export default SessionDatePicker;
