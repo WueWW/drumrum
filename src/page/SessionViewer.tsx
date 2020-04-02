@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Hammer from 'react-hammerjs';
 import { RouteComponentProps } from 'react-router';
 
 import { FavManagerProps } from '../component/FavManager';
@@ -15,14 +14,9 @@ export interface Props extends FavManagerProps, RouteComponentProps<any> {
 
 export interface State {}
 
-// TODO fix swipe left/right
-
 class SessionViewer extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
-
-        this.onDateSelected = this.onDateSelected.bind(this);
-        this.onSwipe = this.onSwipe.bind(this);
     }
 
     selectedDate() {
@@ -40,55 +34,19 @@ class SessionViewer extends Component<Props, State> {
         return availableDates[0];
     }
 
-    onDateSelected(selectedDate: string) {
-        this.props.history.replace(`/${selectedDate}`);
-    }
-
-    onSwipe(event: HammerInput) {
-        if (event.deltaX < 0) {
-            this.onSwipeLeft();
-        } else {
-            this.onSwipeRight();
-        }
-    }
-
-    onSwipeLeft() {
-        // load next day (if any)
-        const dates = Object.keys(Session.partitionByDate(this.props.sessions)).sort();
-        let index = dates.findIndex(value => value === this.selectedDate());
-
-        index++;
-
-        if (index < dates.length) {
-            this.onDateSelected(dates[index]);
-        }
-    }
-
-    onSwipeRight() {
-        // load next day (if any)
-        const dates = Object.keys(Session.partitionByDate(this.props.sessions)).sort();
-        const index = dates.findIndex(value => value === this.selectedDate());
-
-        if (index > 0) {
-            this.onDateSelected(dates[index - 1]);
-        }
-    }
-
     render() {
         const partitionedSessions = Session.partitionByDate(this.props.sessions);
 
         return (
-            <Hammer direction="DIRECTION_HORIZONTAL" onSwipe={this.onSwipe}>
-                <div>
-                    <SessionDatePicker
-                        options={Object.keys(partitionedSessions).sort()}
-                        selectedDate={this.selectedDate()}
-                    />
-                    <SessionTable {...this.props} sessions={partitionedSessions[this.selectedDate()]} />
+            <div>
+                <SessionDatePicker
+                    options={Object.keys(partitionedSessions).sort()}
+                    selectedDate={this.selectedDate()}
+                />
+                <SessionTable {...this.props} sessions={partitionedSessions[this.selectedDate()]} />
 
-                    <Footer />
-                </div>
-            </Hammer>
+                <Footer />
+            </div>
         );
     }
 }
