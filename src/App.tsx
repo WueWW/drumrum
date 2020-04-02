@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { HashRouter as Router, Route, RouteComponentProps, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, RouteComponentProps, Switch, Link } from 'react-router-dom';
 
 import FavManager from './component/FavManager';
 import InitStatusIndicatorOrApp from './component/InitStatusIndicatorOrApp';
@@ -93,9 +93,9 @@ class App extends Component<Props, AppState> {
                 <div className="site">
                     <header className="site-header">
                         <div className="wueww__logo">
-                            <a href="/">
-                                <img src="/assets/wueww-logo-2020.svg" />
-                            </a>
+                            <Link to="/">
+                                <img src="assets/wueww-logo-2020.svg" />
+                            </Link>
                         </div>
                         <nav>
                             <ul className="site-menu">
