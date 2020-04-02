@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import { FavManagerProps } from '../component/FavManager';
 import Footer from '../component/Footer';
 import SessionDatePicker from '../component/SessionDatePicker';
 import SessionTable from '../component/SessionTable';
 import { Session, SessionList } from '../model/Session';
 
-export interface Props extends FavManagerProps, RouteComponentProps<any> {
+export interface Props extends RouteComponentProps<any> {
     sessions: SessionList;
     selectedDate?: string;
 }

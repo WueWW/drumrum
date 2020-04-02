@@ -3,10 +3,7 @@ import React from 'react';
 import { Session as SessionType } from '../../../model/Session';
 import { Link } from 'react-router-dom';
 
-export interface Props extends SessionType {
-    isFavorite: boolean;
-    onToggleFavorite: () => void;
-}
+export interface Props extends SessionType {}
 
 function formatTime(dt: string): string {
     return new Date(dt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';

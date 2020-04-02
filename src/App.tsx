@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { HashRouter as Router, Route, RouteComponentProps, Switch, Link } from 'react-router-dom';
 
-import FavManager from './component/FavManager';
 import InitStatusIndicatorOrApp from './component/InitStatusIndicatorOrApp';
 import AppState, { InitStatus } from './model/AppState';
-import FavoritesListPage from './page/FavoritesListPage';
 import InfoPage from './page/InfoPage';
 import SessionViewer from './page/SessionViewer';
 
@@ -126,34 +124,25 @@ class App extends Component<Props, AppState> {
                     </header>
                     <InitStatusIndicatorOrApp {...this.state}>
                         {sessions => (
-                            <FavManager>
-                                {fav => (
-                                    <Switch>
-                                        <Route path="/impressum" component={() => <InfoPage />} />
-                                        <Route
-                                            path="/favorites"
-                                            component={() => <FavoritesListPage {...fav} sessions={sessions} />}
+                            <Switch>
+                                <Route path="/impressum" component={() => <InfoPage />} />
+                                <Route
+                                    path="/veranstaltung/:id"
+                                    render={(route: RouteComponentProps<any>) => (
+                                        <span>TODO: Veranstaltung #{route.match.params.id}</span>
+                                    )}
+                                />
+                                <Route
+                                    path="/:date?"
+                                    render={(route: RouteComponentProps<any>) => (
+                                        <SessionViewer
+                                            {...route}
+                                            selectedDate={route.match.params.date}
+                                            sessions={sessions}
                                         />
-                                        <Route
-                                            path="/veranstaltung/:id"
-                                            render={(route: RouteComponentProps<any>) => (
-                                                <span>TODO: Veranstaltung #{route.match.params.id}</span>
-                                            )}
-                                        />
-                                        <Route
-                                            path="/:date?"
-                                            render={(route: RouteComponentProps<any>) => (
-                                                <SessionViewer
-                                                    {...fav}
-                                                    {...route}
-                                                    selectedDate={route.match.params.date}
-                                                    sessions={sessions}
-                                                />
-                                            )}
-                                        />
-                                    </Switch>
-                                )}
-                            </FavManager>
+                                    )}
+                                />
+                            </Switch>
                         )}
                     </InitStatusIndicatorOrApp>
                     <footer className="site-footer">

@@ -12,24 +12,8 @@ const InfoPage: FunctionComponent = () => (
             diese auf deinem Handy zum Startbildschirm hinzufügen und auch offline verwenden.
         </p>
 
-        <h2>Bedienungshinweise</h2>
-        <p>
-            Im Fahrplan-Teil der Anwendung kannst du sämtliche Sessions der WueWW nach Tagen gegliedert sehen. Wenn du
-            die Sessionkachel aufklappst, findest du auch weitere Details zur Session. Zwischen den Tagen kannst du
-            wahlweise über das Dropdown oben, oder auch durch einfaches Swipen hin und her wechseln.
-        </p>
-
-        <p>
-            Deine favorisierten Sessions kannst du mit dem Herz-Symbol markieren und anschließend übersichtlich auf der
-            Favoriten-Seite wieder abrufen.
-        </p>
-
         <h2>Datenschutz</h2>
-        <p>
-            Diese App ist auf Datensparsamkeit ausgelegt. Von dir in der App gemachte persönliche Einstellungen (z.B.
-            gewählte Favoriten) werden ausschließlich lokal in deinem Browser abgelegt und nicht an den Server
-            übertragen. Die App wird über GitHub Pages veröffentlicht, von dritter Seite werden keine Daten abgerufen.
-        </p>
+        <p>Die App wird über GitHub Pages veröffentlicht, von dritter Seite werden keine Daten abgerufen.</p>
 
         <h2>Impressum</h2>
         <p>
