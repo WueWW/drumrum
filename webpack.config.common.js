@@ -41,13 +41,12 @@ module.exports = {
         ],
     },
     resolve: {
-        alias: {
-        },
+        alias: {},
         extensions: ['.ts', '.tsx', '.js'],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'WueWW Drumrum Timetable',
+            title: 'WueWW Digital Events',
             template: './public/index.html',
         }),
         new MiniCssExtractPlugin({

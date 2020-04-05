@@ -1,6 +1,6 @@
-# WueWW Drumrum Timetable
+# WueWW Digital Events Timetable
 
-Timetable für das Drumrum die [Würzburg Web Week](https://wueww.de/).
+Timetable für digitale Events um die [Würzburg Web Week](https://wueww.de/).
 
 Dieser Timetable soll letztlich eine Liste der Sessions zeigen, die um die Web Week herum stattfinden.
 Und das Ganze soll natürlich auch offline funktionieren, wenn man mit seinem Handy im Funkloch steckt.
