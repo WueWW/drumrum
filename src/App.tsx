@@ -5,6 +5,7 @@ import InitStatusIndicatorOrApp from './component/InitStatusIndicatorOrApp';
 import AppState, { InitStatus } from './model/AppState';
 import InfoPage from './page/InfoPage';
 import SessionViewer from './page/SessionViewer';
+import SessionDetailViewer from './page/SessionDetailViewer';
 
 export interface Props {}
 
@@ -128,9 +129,10 @@ class App extends Component<Props, AppState> {
                                 <Route path="/impressum" component={() => <InfoPage />} />
                                 <Route
                                     path="/veranstaltung/:id"
-                                    render={(route: RouteComponentProps<any>) => (
-                                        <span>TODO: Veranstaltung #{route.match.params.id}</span>
-                                    )}
+                                    render={(route: RouteComponentProps<any>) => {
+                                        const sessionId = parseInt(route.match.params.id, 10);
+                                        return <SessionDetailViewer session={sessions.find(x => x.id === sessionId)} />;
+                                    }}
                                 />
                                 <Route
                                     path="/:date?"
