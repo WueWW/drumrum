@@ -696,6 +696,9 @@ body {
     background-color: #f5f6f8;
     cursor: pointer;
     transition: all 333ms ease-in-out;
+
+    display: inline-block;
+    text-decoration: none;
 }
 .button-back:before {
     content: '← ';
