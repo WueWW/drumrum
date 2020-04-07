@@ -9,7 +9,7 @@ import SessionDetailViewer from './page/SessionDetailViewer';
 
 export interface Props {}
 
-const SESSION_DATA_URL = 'https://wueww-tool.metafnord.de/export/session.json';
+const SESSION_DATA_URL = 'https://backend.digital-events.wueww.de/export/session.json';
 const updatesChannel = typeof BroadcastChannel !== 'undefined' && new BroadcastChannel('session-updates');
 
 class App extends Component<Props, AppState> {
@@ -148,7 +148,7 @@ class App extends Component<Props, AppState> {
                         )}
                     </InitStatusIndicatorOrApp>
                     <footer className="site-footer">
-                        <a href="https://wueww-tool.metafnord.de/" className="missing-event">
+                        <a href="https://backend.digital-events.wueww.de/" className="missing-event">
                             Veranstaltung melden
                         </a>
                     </footer>
