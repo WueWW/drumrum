@@ -19,11 +19,12 @@ class SessionViewer extends Component<Props, State> {
     }
 
     selectedDate() {
-        return this.props.selectedDate || this.defaultDate();
-    }
-
-    defaultDate() {
         const availableDates = Object.keys(Session.partitionByDate(this.props.sessions)).sort();
+
+        if (this.props.selectedDate && availableDates.includes(this.props.selectedDate)) {
+            return this.props.selectedDate;
+        }
+
         const todayDate = new Date().toISOString().substr(0, 10);
 
         if (availableDates.includes(todayDate)) {
@@ -35,14 +36,12 @@ class SessionViewer extends Component<Props, State> {
 
     render() {
         const partitionedSessions = Session.partitionByDate(this.props.sessions);
+        const selectedDate = this.selectedDate();
 
         return (
             <div>
-                <SessionDatePicker
-                    options={Object.keys(partitionedSessions).sort()}
-                    selectedDate={this.selectedDate()}
-                />
-                <SessionTable {...this.props} sessions={partitionedSessions[this.selectedDate()]} />
+                <SessionDatePicker options={Object.keys(partitionedSessions).sort()} selectedDate={selectedDate} />
+                <SessionTable {...this.props} sessions={partitionedSessions[selectedDate]} />
 
                 <Footer />
             </div>
