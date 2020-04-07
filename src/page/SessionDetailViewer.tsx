@@ -9,6 +9,10 @@ export interface Props {
 
 export interface State {}
 
+function formatTime(dt: string): string {
+    return new Date(dt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+}
+
 // TODO nl2br description
 
 class SessionDetailViewer extends Component<Props, State> {
@@ -36,7 +40,9 @@ class SessionDetailViewer extends Component<Props, State> {
                         <ul className="session-meta-list">
                             <li>
                                 <strong>Datum: </strong>
-                                {new Date(this.props.session.start).toLocaleDateString('de-DE')}
+                                {new Date(this.props.session.start).toLocaleDateString('de-DE')}{' '}
+                                {formatTime(this.props.session.start)}
+                                {this.props.session.end && ' - ' + formatTime(this.props.session.end)}
                             </li>
                             <li>
                                 <strong>Ort: </strong>
