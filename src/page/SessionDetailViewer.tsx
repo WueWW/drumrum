@@ -22,7 +22,7 @@ class SessionDetailViewer extends Component<Props, State> {
 
     render() {
         if (this.props.session === undefined) {
-            return 'moep';
+            return 'Unbekannte Session-ID';
         }
 
         return (
