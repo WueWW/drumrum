@@ -33,7 +33,11 @@ class SessionDetailViewer extends Component<Props, State> {
                     </Link>
                 </header>
                 <h1>{this.props.session.title}</h1>
-                <p>{this.props.session.description?.long ?? this.props.session.description?.short}</p>
+                {(this.props.session.description?.long ?? this.props.session.description?.short)
+                    ?.split(/\n/)
+                    .map((str, i) => (
+                        <p key={i}>{str}</p>
+                    ))}
                 <div className="session-data">
                     <div>
                         <h2>Veranstaltungsdaten</h2>
@@ -106,7 +110,11 @@ class SessionDetailViewer extends Component<Props, State> {
                                     </a>
                                 )}
                             </div>
-                            <p>{this.props.session.host.infotext}</p>
+                            <p>
+                                {this.props.session.host.infotext?.split(/\n/).map((str, i) => (
+                                    <p key={i}>{str}</p>
+                                ))}
+                            </p>
                             {/*<p>
                                 <a href="/veranstalter/102">Weitere Termine von diesem Veranstalter</a>
                             </p>*/}
