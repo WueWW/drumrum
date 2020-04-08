@@ -13,8 +13,6 @@ function formatTime(dt: string): string {
     return new Date(dt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
 }
 
-// TODO nl2br description
-
 class SessionDetailViewer extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -27,7 +25,7 @@ class SessionDetailViewer extends Component<Props, State> {
 
         return (
             <div className="session-page">
-                <header>
+                <header style={{ margin: '2rem 0' }}>
                     <Link to="/" className="button-back">
                         zurück
                     </Link>

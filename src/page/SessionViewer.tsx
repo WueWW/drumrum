@@ -40,6 +40,10 @@ class SessionViewer extends Component<Props, State> {
 
         return (
             <div>
+                <header style={{ margin: '2rem 0' }}>
+                    Hier findest Du ab sofort eine Terminübersicht über alle "Digital Events", also Veranstaltungen –
+                    offline und online – mit dem Schwerpunkt Digitalisierung & Innovation.
+                </header>
                 <SessionDatePicker options={Object.keys(partitionedSessions).sort()} selectedDate={selectedDate} />
                 <SessionTable {...this.props} sessions={partitionedSessions[selectedDate]} />
 
