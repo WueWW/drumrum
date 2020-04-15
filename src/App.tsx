@@ -104,11 +104,11 @@ class App extends Component<Props, AppState> {
                                 <li className="site-menu__item">
                                     <a href="https://wueww.de/about/">About</a>
                                 </li>
-                                <li className="site-menu__item">
-                                    <a href="https://wueww.de/rueckblick-2019/">Rückblick</a>
-                                </li>
                                 <li className="site-menu__item site-menu__item--nowrap">
                                     <a href="https://timetable.wueww.de/">Programm 2020</a>
+                                </li>
+                                <li className="site-menu__item site-menu__item--nowrap">
+                                    <Link to="/">Digital Events</Link>
                                 </li>
                                 <li className="site-menu__item">
                                     <a href="https://wueww.de/sponsoren/">Sponsoren</a>
