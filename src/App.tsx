@@ -6,6 +6,7 @@ import AppState, { InitStatus } from './model/AppState';
 import InfoPage from './page/InfoPage';
 import SessionViewer from './page/SessionViewer';
 import SessionDetailViewer from './page/SessionDetailViewer';
+import { SessionList } from './model/Session';
 
 export interface Props {}
 
@@ -29,8 +30,15 @@ class App extends Component<Props, AppState> {
 
         this.setState({
             status: InitStatus.InitializationComplete,
-            sessions: data.sessions,
+            sessions: this.filterOldSessions(data.sessions),
         });
+    };
+
+    filterOldSessions = (sessions: SessionList): SessionList => {
+        const cutOffDate = new Date();
+        cutOffDate.setHours(0, 0, 0, 0);
+
+        return sessions.filter(session => new Date(session.start) >= cutOffDate);
     };
 
     fetchSessionJSON = async () => {
