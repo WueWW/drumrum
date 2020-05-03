@@ -10,7 +10,6 @@ import SessionDetailViewer from './page/SessionDetailViewer';
 export interface Props {}
 
 const SESSION_DATA_URL = 'https://backend.digital-events.wueww.de/export/session.json';
-const updatesChannel = typeof BroadcastChannel !== 'undefined' && new BroadcastChannel('session-updates');
 
 class App extends Component<Props, AppState> {
     private lastFetch?: number;
@@ -50,14 +49,12 @@ class App extends Component<Props, AppState> {
     };
 
     componentDidMount() {
-        updatesChannel && updatesChannel.addEventListener('message', this.onSessionDataUpdate);
         document.addEventListener('visibilitychange', this.onVisibilityChange);
 
         this.fetchSessionJSON();
     }
 
     componentWillUnmount() {
-        updatesChannel && updatesChannel.removeEventListener('message', this.onSessionDataUpdate);
         document.removeEventListener('visibilitychange', this.onVisibilityChange);
     }
 
@@ -67,23 +64,6 @@ class App extends Component<Props, AppState> {
         }
 
         this.fetchSessionJSON();
-    };
-
-    onSessionDataUpdate = async (event: any) => {
-        const { cacheName, updatedUrl } = event.data.payload;
-
-        try {
-            const cache = await caches.open(cacheName);
-            const response = await cache.match(updatedUrl);
-
-            if (!response) {
-                return;
-            }
-
-            this.processSessionJSON(await response.json());
-        } catch {
-            console.warn('onSessionDataUpdate called, but updated failed');
-        }
     };
 
     render() {

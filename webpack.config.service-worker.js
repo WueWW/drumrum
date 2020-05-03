@@ -10,10 +10,7 @@ module.exports = isProdBuild => {
         runtimeCaching: [
             {
                 urlPattern: 'https://backend.digital-events.wueww.de/export/session.json',
-                handler: 'StaleWhileRevalidate',
-                options: {
-                    broadcastUpdate: { channelName: 'session-updates' },
-                },
+                handler: 'NetworkFirst',
             },
         ],
     };
