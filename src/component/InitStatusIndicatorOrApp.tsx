@@ -7,27 +7,11 @@ export type Props = AppState & { children: (sessions: SessionList) => React.Reac
 
 const InitStatusIndicatorOrApp: FunctionComponent<Props> = props => {
     if (props.status === InitStatus.InitializationFailed) {
-        return null /* (
-            <Message icon negative>
-                <Icon name="warning sign" />
-                <Message.Content>
-                    <Message.Header>Fehler beim Laden der Sessiondaten</Message.Header>
-                    <p>Die Sessiondaten konnten leider nicht geladen werden. Sorry ¯\_(ツ)_/¯</p>
-                </Message.Content>
-            </Message>
-        ) */;
+        return <p>Die Sessiondaten konnten leider nicht geladen werden. Sorry ¯\_(ツ)_/¯</p>;
     }
 
     if (props.status === InitStatus.FetchingSessionData) {
-        return null /*(
-            <Message icon>
-                <Icon name="circle notched" loading />
-                <Message.Content>
-                    <Message.Header>Einen Moment bitte...</Message.Header>
-                    Die Sessiondaten werden gerade geladen.
-                </Message.Content>
-            </Message>
-        ) */;
+        return <p>Veranstaltungen werden geladen...</p>;
     }
 
     return <Fragment>{props.children(props.sessions)} </Fragment>;
