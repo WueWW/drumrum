@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Session } from '../model/Session';
 import { Link } from 'react-router-dom';
+import MaybeLink from './MaybeLink';
 
 export interface Props {
     session: Session | undefined;
@@ -48,12 +49,14 @@ class SessionDetailViewer extends Component<Props, State> {
                             </li>
                             <li>
                                 <strong>Ort: </strong>
-                                <a href={this.props.session.location}>{this.props.session.location}</a>
+                                <MaybeLink text={this.props.session.location} />
                             </li>
                             {this.props.session.links?.event && (
                                 <li className="session-section__register">
                                     <strong>Anmeldung: </strong>
-                                    <a href={this.props.session.links?.event}>{this.props.session.links?.event}</a>
+                                    <MaybeLink text={this.props.session.links?.event}>
+                                        {this.props.session.links?.event}
+                                    </MaybeLink>
                                 </li>
                             )}
                         </ul>
