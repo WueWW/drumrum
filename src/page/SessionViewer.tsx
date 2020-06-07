@@ -37,6 +37,7 @@ class SessionViewer extends Component<Props, State> {
     render() {
         const partitionedSessions = Session.partitionByDate(this.props.sessions);
         const selectedDate = this.selectedDate();
+        const sessions = partitionedSessions[selectedDate];
 
         return (
             <div>
@@ -45,7 +46,11 @@ class SessionViewer extends Component<Props, State> {
                     offline und online – mit dem Schwerpunkt Digitalisierung & Innovation.
                 </header>
                 <SessionDatePicker options={Object.keys(partitionedSessions).sort()} selectedDate={selectedDate} />
-                <SessionTable {...this.props} sessions={partitionedSessions[selectedDate]} />
+                {sessions ? (
+                    <SessionTable {...this.props} sessions={sessions} />
+                ) : (
+                    <p>Aktuell stehen keine Veranstaltungen an.</p>
+                )}
 
                 <Footer />
             </div>
