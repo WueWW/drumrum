@@ -107,11 +107,11 @@ class SessionDetailViewer extends Component<Props, State> {
                                     </a>
                                 )}
                             </div>
-                            <p>
+                            <div>
                                 {this.props.session.host.infotext?.split(/\n/).map((str, i) => (
                                     <p key={i}>{str}</p>
                                 ))}
-                            </p>
+                            </div>
                             {/*<p>
                                 <a href="/veranstalter/102">Weitere Termine von diesem Veranstalter</a>
                             </p>*/}
