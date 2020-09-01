@@ -8,7 +8,7 @@ export interface Props {
     session: Session | undefined;
 }
 
-export interface State {}
+export interface State { }
 
 function formatTime(dt: string): string {
     return new Date(dt).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
@@ -46,10 +46,6 @@ class SessionDetailViewer extends Component<Props, State> {
                                 {new Date(this.props.session.start).toLocaleDateString('de-DE')}{' '}
                                 {formatTime(this.props.session.start)}
                                 {this.props.session.end && ' - ' + formatTime(this.props.session.end)}
-                            </li>
-                            <li>
-                                <strong>Ort: </strong>
-                                <MaybeLink text={this.props.session.location} />
                             </li>
                             {this.props.session.links?.event && (
                                 <li className="session-section__register">
